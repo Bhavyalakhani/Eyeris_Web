@@ -2,13 +2,21 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
 import { Card, Row, Col, ListGroup, Button } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
+import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { TextField } from '@material-ui/core';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const Checkout = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const [address, setAddress] = useState('');
   const [products, setProducts] = useState([]);
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -35,7 +43,7 @@ const Checkout = () => {
       totalPrice: currentUser.totalPrice,
       address: address,
       products: products,
-      detailedrder: currentUser.cart,
+      detailedorder: currentUser.cart,
     });
     console.log(raw);
     var requestOptions = {
@@ -50,6 +58,7 @@ const Checkout = () => {
       .then((result) => {
         console.log(result);
         getCurrentUser();
+        handleClick();
         setAddress('');
       })
       .catch((error) => console.log('error', error));
@@ -92,6 +101,17 @@ const Checkout = () => {
   function handleChange(event) {
     setAddress(event.target.value);
   }
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
   return (
     <div>
       <div className="container">
@@ -142,9 +162,19 @@ const Checkout = () => {
                 </li>
               </ul>
               <Button onClick={submitOrder}> Confirm Order</Button>
+              <br></br>
+              <br></br>
+              <Link to="/myorders">
+                <Button onClick={submitOrder}> Your Orders</Button>
+              </Link>
             </div>
           </Col>
         </Row>
+        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            Your Order has been placed successfully!
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );
