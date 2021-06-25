@@ -34,7 +34,6 @@ exports.login = async(req, res, next) => {
 
     // Check for user
     const user = await User.findOne({email}).select('+password');
-    console.log(user)
 
     if(!user){
         return res.status(401).json({

@@ -4,7 +4,7 @@
   "description": "E-Commerce ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix ../client",
@@ -40,5 +40,10 @@
     "nodemon": "^2.0.7",
     "slugify": "^1.5.2",
     "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.0.0"
   }
 }

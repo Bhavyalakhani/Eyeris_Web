@@ -13,3 +13,5 @@ npm start
 To run both the frontend and backend together
 cd backend
 npm run dev
+
+TechStack - MERN,mocha,chai
