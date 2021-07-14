@@ -22,7 +22,9 @@ const Checkout = () => {
     if (currentUser) {
       if (currentUser.cart) {
         let products = [];
+        console.log(currentUser.cart);
         currentUser.cart.forEach((item) => {
+          console.log(item);
           products.push(item.product);
         });
         setProducts(products);

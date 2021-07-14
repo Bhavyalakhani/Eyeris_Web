@@ -22,7 +22,7 @@ const Cart = () => {
       currentUser.cart.forEach((item) => {
         total += item.price;
         let obj = {
-          product: item.id,
+          product: item.product,
           name: item.name,
           quantity: parseInt(item.quantity),
           price: item.price,
@@ -52,6 +52,7 @@ const Cart = () => {
       cart: cart,
     });
 
+    console.log(raw);
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
