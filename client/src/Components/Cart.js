@@ -59,7 +59,10 @@ const Cart = () => {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/api/v1/user/createCart', requestOptions)
+    fetch(
+      process.env.REACT_APP_BACKEND_API_URL + 'user/createCart',
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));

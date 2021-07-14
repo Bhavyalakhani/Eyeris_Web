@@ -21,7 +21,7 @@ const Myorders = () => {
         getOrder();
       }
     }
-  }, []);
+  }, [currentUser]);
 
   function getOrder() {
     const token = currentUser.token
@@ -38,7 +38,7 @@ const Myorders = () => {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/api/v1/order/getMyOrders', requestOptions)
+    fetch(process.env.REACT_APP_BACKEND_API_URL+'order/getMyOrders', requestOptions)
       .then((response) => response.text())
       .then((result) => {
         result = JSON.parse(result);
@@ -68,7 +68,7 @@ const Myorders = () => {
                   <Table responsive>
                     <thead>
                       {/* <tr> */}
-                      <th>Order #{orders.indexOf(order) + 1}</th>
+                      <th>Order No #{orders.indexOf(order) + 1}</th>
                       {/* </tr> */}
                       <tr>
                         <th>Sr No.</th>
@@ -98,7 +98,7 @@ const Myorders = () => {
               );
             })}
 
-            <Row>
+            {/* <Row>
               <Col className="d-grid gap-2">
                 <Link to="/checkout">
                   <Button className="mt-3" variant="dark">
@@ -111,7 +111,7 @@ const Myorders = () => {
                   Save Cart for Later
                 </Button>
               </Col>
-            </Row>
+            </Row> */}
           </Col>
         </Row>
       </div>

@@ -80,7 +80,10 @@ const Register = (props) => {
         body: raw,
       };
       console.log(raw, requestOptions);
-      fetch('http://localhost:5000/api/v1/user/register', requestOptions)
+      fetch(
+        process.env.REACT_APP_BACKEND_API_URL + 'user/register',
+        requestOptions
+      )
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
@@ -184,7 +187,7 @@ const Register = (props) => {
         </Form.Group>
 
         <div className="d-grid gap-2 button-width">
-          <Button variant="primary"  onClick={registerHandler}>
+          <Button variant="primary" onClick={registerHandler}>
             Register
           </Button>
         </div>

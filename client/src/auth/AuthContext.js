@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
         headers: myHeaders,
         redirect: 'follow',
       };
-      fetch('http://localhost:5000/api/v1/user/me', requestOptions)
+      fetch(process.env.REACT_APP_BACKEND_API_URL + 'user/me', requestOptions)
         .then((response) => response.text())
         .then((result) => {
           result = JSON.parse(result);
