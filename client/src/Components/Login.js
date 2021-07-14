@@ -60,7 +60,7 @@ const Login = (props) => {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/api/v1/user/login', requestOptions)
+    fetch(process.env.REACT_APP_BACKEND_API_URL + 'user/login', requestOptions)
       .then((response) => response.text())
       .then((result) => {
         result = JSON.parse(result);

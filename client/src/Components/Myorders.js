@@ -38,7 +38,7 @@ const Myorders = () => {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/api/v1/order/getMyOrders', requestOptions)
+    fetch(process.env.REACT_APP_BACKEND_API_URL+'order/getMyOrders', requestOptions)
       .then((response) => response.text())
       .then((result) => {
         result = JSON.parse(result);

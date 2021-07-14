@@ -53,9 +53,13 @@ const Checkout = () => {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/api/v1/order/createOrder', requestOptions)
+    fetch(
+      process.env.REACT_APP_BACKEND_API_URL + 'order/createOrder',
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => {
+        result = JSON.parse(result);
         console.log(result);
         getCurrentUser();
         handleClick();
@@ -79,7 +83,7 @@ const Checkout = () => {
       redirect: 'follow',
     };
     console.log(myHeaders);
-    fetch('http://localhost:5000/api/v1/user/me', requestOptions)
+    fetch(process.env.REACT_APP_BACKEND_API_URL + 'user/me', requestOptions)
       .then((response) => response.text())
       .then((result) => {
         result = JSON.parse(result);
