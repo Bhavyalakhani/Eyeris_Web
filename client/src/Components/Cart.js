@@ -116,17 +116,17 @@ const Cart = () => {
               <Col className="d-grid gap-2">
                 <Link to="/checkout">
                   <Button className="mt-3" variant="dark">
-                    Confirm Order
+                    Proceed to Checkout
                   </Button>
                 </Link>
               </Col>
-              <Col className="d-grid gap-2">
+              {/* <Col className="d-grid gap-2">
                 <Link to="/myorders">
                   <Button className="mt-3" variant="dark">
                     Your Orders
                   </Button>
                 </Link>
-              </Col>
+              </Col> */}
               <Col className="d-grid gap-2">
                 <Button className="mt-3" variant="dark" onClick={saveCart}>
                   Save Cart for Later
