@@ -24,7 +24,7 @@ const Product = (props) => {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/api/v1/product/' + productId, requestOptions)
+    fetch(process.env.REACT_APP_BACKEND_API_URL+'product/' + productId, requestOptions)
       .then((response) => response.text())
       .then((result) => {
         result = JSON.parse(result);

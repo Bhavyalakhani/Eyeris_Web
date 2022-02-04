@@ -48,6 +48,32 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" class="justify-content-end">
             <Nav className="ml-auto justify-content-end">
+              {!currentUser ? null : (
+                <>
+                  <LinkContainer to="/cart">
+                    <Nav.Link>
+                      <StyledBadge badgeContent={totalItems} color="primary">
+                        <i
+                          class="fas fa-shopping-cart"
+                          style={{ color: 'white' }}
+                        ></i>
+                      </StyledBadge>
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/profile">
+                    <Nav.Link>
+                      <i className="fas fa-user-circle"></i> Profile
+                    </Nav.Link>
+                  </LinkContainer>
+                </>
+              )}
+              {!currentUser ? (
+                <LinkContainer to="/register">
+                  <Nav.Link>
+                    <i className="fas fa-user-plus"></i> Sign Up
+                  </Nav.Link>
+                </LinkContainer>
+              ) : null}{' '}
               {!currentUser ? (
                 <LinkContainer to="/login">
                   <Nav.Link>
@@ -59,33 +85,6 @@ const Header = () => {
                   <i className="fas fa-user"></i> Logout
                 </Nav.Link>
               )}
-
-              {!currentUser ? null : (
-                <>
-                  <LinkContainer to="/profile">
-                    <Nav.Link>
-                      <i className="fas fa-user-circle"></i> Profile
-                    </Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to="/cart">
-                    <Nav.Link>
-                      <StyledBadge badgeContent={totalItems} color="primary">
-                        <i
-                          class="fas fa-shopping-cart"
-                          style={{ color: 'white' }}
-                        ></i>
-                      </StyledBadge>
-                    </Nav.Link>
-                  </LinkContainer>
-                </>
-              )}
-              {!currentUser ? (
-                <LinkContainer to="/register">
-                  <Nav.Link>
-                    <i className="fas fa-user-plus"></i> Sign Up
-                  </Nav.Link>
-                </LinkContainer>
-              ) : null}
             </Nav>
           </Navbar.Collapse>
         </Container>

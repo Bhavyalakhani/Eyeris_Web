@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../auth/AuthContext';
 import { Card, Row, Col, ListGroup, Button, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import user from '../Assets/user.png';
 
 const Profile = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -23,10 +24,7 @@ const Profile = () => {
       <div className="container">
         <Row className="mt-3">
           <Col sm={12} md={4}>
-            <img
-              style={{ height: '50%', width: 'auto' }}
-              src="https://miro.medium.com/max/3150/1*TQw2_wmdWlXYXVSsz45Kdw.jpeg"
-            />
+            <img style={{ height: '100%', width: 'auto' }} src={user} />
           </Col>
           <Col sm={12} md={8}>
             <Card>

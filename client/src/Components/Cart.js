@@ -22,7 +22,7 @@ const Cart = () => {
       currentUser.cart.forEach((item) => {
         total += item.price;
         let obj = {
-          product: item.id,
+          product: item.product,
           name: item.name,
           quantity: parseInt(item.quantity),
           price: item.price,
@@ -52,6 +52,7 @@ const Cart = () => {
       cart: cart,
     });
 
+    console.log(raw);
     var requestOptions = {
       method: 'POST',
       headers: myHeaders,
@@ -59,7 +60,10 @@ const Cart = () => {
       redirect: 'follow',
     };
 
-    fetch('http://localhost:5000/api/v1/user/createCart', requestOptions)
+    fetch(
+      process.env.REACT_APP_BACKEND_API_URL + 'user/createCart',
+      requestOptions
+    )
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log('error', error));
@@ -112,17 +116,17 @@ const Cart = () => {
               <Col className="d-grid gap-2">
                 <Link to="/checkout">
                   <Button className="mt-3" variant="dark">
-                    Confirm Order
+                    Proceed to Checkout
                   </Button>
                 </Link>
               </Col>
-              <Col className="d-grid gap-2">
+              {/* <Col className="d-grid gap-2">
                 <Link to="/myorders">
                   <Button className="mt-3" variant="dark">
                     Your Orders
                   </Button>
                 </Link>
-              </Col>
+              </Col> */}
               <Col className="d-grid gap-2">
                 <Button className="mt-3" variant="dark" onClick={saveCart}>
                   Save Cart for Later
