@@ -10,8 +10,9 @@ const cors = require("cors");
 const helmet = require("helmet")
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require("xss-clean");
+const redis = require("redis");
 
-
+const client = redis.createClient(6739)
 
 // paths 
 const connectDB = require('./config/db');
